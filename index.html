@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Le chiffrement de Vigenère</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+      <a href="#histoire" class="yellow">1. Histoire</a>
+      <a href="#protocole" class="aqua">2. Protocole</a>
+      <a href="#python-crypter" class="light-green">3. Python (crypter)</a>
+      <a href="#python-décrypter" class="light-coral">4. Python (décrypter)</a>
+  </div>
+  </nav>
+  <section id="histoire">
+        <div class="title"><h1>Le Chiffre de Vigenère</h1>
+        </div>
+        <hr>
+        <div class="mainbox">
+          <div class="histoire">
+              <div class="histoire-title">
+                  <h2>Histoire</h2>
+              </div>
+              <div class="histoire-content">
+                  <p>Le <strong>chiffre de Vigenère</strong> est une méthode de chiffrement par substitution <u class="souligné_vert">polyalphabétique</u> inventée 
+                      par <strong>Blaise de Vigenère</strong> au XVIe siècle. Contrairement au chiffre de <strong>César</strong> qui utilise un seul décalage 
+                      pour chiffrer le texte, le chiffre de <strong>Vigenère</strong> utilise une série de décalages basés sur une clé. 
+                      Cette clé, composée de lettres, est répétée pour correspondre à la longueur du message à chiffrer. 
+                      Chaque lettre du message est alors décalée selon la lettre correspondante de la clé, 
+                      ce qui rend le chiffrement plus complexe à casser que le chiffre de <strong>César</strong>.</p>
+              </div>
+          </div>
+          <div class="def1">
+              <h5><u>Polyalphabétique :</u></h5><p>La notion de "polyalphabétique" signifie utiliser plusieurs alphabets pour chiffrer un message. Cela rend le chiffrement plus complexe et difficile à décoder.</p> <br>
+          </div>
+      </div>
+
+      <div class="box2">
+        <div class="remarque">
+          <h5 class="remarque-title"><strong><u>Il faut savoir que :</u></strong></h5><p>L'introduction du chiffre de <strong>Vigenère</strong> a révolutionné la cryptographie au XVIe siècle, offrant une méthode plus robuste pour sécuriser les communications diplomatiques et militaires. Son utilisation a renforcé la confidentialité des messages chiffrés, contribuant ainsi à l'évolution de la cryptographie vers des techniques plus sophistiquées.</p>
+        </div>
+      </div>
+            
+            <div class="box3">
+              <div class="biographie">
+                <h4><strong><u>La vie de Blaise Vigenère</u></strong></h4>
+                <p><strong>Blaise de Vigenère</strong> (1523-1596), célèbre diplomate français du XVIe siècle, est également reconnu pour ses contributions 
+                  majeures à la <strong>cryptographie</strong>. Son traité <strong>"Traicté des chiffres"</strong> (1586) a présenté <strong>le chiffre de Vigenère</strong>
+                  , une méthode polyalphabétique de chiffrement. Après une carrière diplomatique distinguée au service de la cour de France, <strong>Vigenère</strong>
+                  s'est consacré à l'exploration des techniques de cryptographie, renforçant ainsi la sécurité des communications de son 
+                  époque. Ses recherches ont profondément influencé le domaine de la cryptographie et continuent de façonner les pratiques 
+                  e sécurité des <strong>communications modernes.</strong></p>
+              </div>
+              <div class="biographie-image1">
+                <img src="/Image/blaise.png"/>
+              </div>
+            </div>
+          </section>
+        
+          <hr>
+
+      <section id="protocole">
+        <div class="box-protocle">
+                <div class="box-protocle-title">
+                    <h2>
+                        Guide étape par étape pour le cryptage
+                    </h2>
+                    <hr>
+                </div>
+                <div class="box-protocle-explication-1-title">
+                    <h3 class="souligné_vert">
+                        Première méthode pour crypter manuellement : Technique du tableau à écart
+                    </h3>
+                </div>
+                <div class="box-protocle-expication-1-content">
+                    <p><u class="souligné_gris">1. Choisir une clé de chiffrement :</u> Déterminez une clé de chiffrement, comme "MUSIQUE".
+                    <br><u class="souligné_gris">2. Saisir le message à crypter :</u> Prenez le message que vous souhaitez crypter, par exemple, "j'adore écouter la radio toute la journée".
+                    <br><u class="souligné_gris">3. Alignement de la Clé avec le Message :</u> Alignez la clé choisie ("MUSIQUE") avec le message à crypter en la répétant autant de fois que nécessaire pour qu'elle ait la même longueur que le message.
+                    <br><u class="souligné_gris">4. Calculer l'écart dans l'alphabet :</u> Pour chaque lettre de la clé, calculez l'écart dans l'alphabet en ajoutant l'écart de la lettre du message avec celui de la clé, en tenant compte du retour au début de la clé lorsque nécessaire. Par exemple, pour "M", l'écart est de 12. 
+                    <br> <br> Pour illustrer, si nous souhaitons chiffrer "bonsoir" avec la clé "musique", nous devons additionner les écarts et sélectionner la nouvelle lettre sur le tableau. Si le résultat dépasse 25, nous revenons à 0. Cela donnerait : "njgbfdv"
+                  </p><img src="Image/tableaudecart.png" alt="">
+                </div>
+      
+      <div class="box-protocole-content-2">
+        <h5 class="souligné_vert">Finalement :</h5>
+          <u class="souligné_gris">5. Obtenir le message crypté :</u> Rassemblez les lettres chiffrées pour former le message crypté final.
+          Répétez ce processus pour chaque lettre du message en avançant dans la clé de chiffrement à chaque étape.</u>
+      </div>
+      <br>
+    </div>
+
+    <div class="box-protocole-2">
+      <div class="box-protocole-explication-2-title">
+        <h3 class="souligné_vert">
+          Deuxième méthode pour crypter manuellement : Technique du tableau à intersection
+        </h3>
+        <div class="box-protocole-explication-2-content">
+          <p><u class="souligné_gris">1. Choisir une clé de chiffrement :</u> Déterminez une clé de chiffrement, comme "MUSIQUE".
+            <br><u class="souligné_gris">2. Saisir le message à crypter :</u> Prenez le message que vous souhaitez crypter, par exemple, "j'adore écouter la radio toute la journée".
+            <br><u class="souligné_gris">3. Alignement de la Clé avec le Message :</u> Alignez la clé choisie ("MUSIQUE") avec le message à crypter en la répétant autant de fois que nécessaire pour qu'elle ait la même longueur que le message.
+            <br><u class="souligné_gris">4. Chiffrement :</u> Pour chaque lettre du message, repérez la lettre correspondante dans la ligne de la clé et la colonne du message dans le tableau de Vigenère. Par exemple, pour la première lettre "j" et la première lettre de la clé "M", trouvez l'intersection dans le tableau de Vigenère pour obtenir la lettre chiffrée.
+            <br><u class="souligné_gris">5. Répétez pour Toutes les Lettres :</u> Répétez l'étape de chiffrement pour chaque lettre du message jusqu'à ce que tout le message soit chiffré.
+          </p> <img src="Image/tableauintersection.png" alt="">
+        </div>
+      </div>
+    </div>
+    <hr>
+  </section>
+  <section id="python-crypter">
+      <div class="box-python">
+        <div class="intro-python">
+          <h2>Démonstration Python</h2>
+          <p>Nous avons montré la méthode manuelle pour utiliser le chiffrement de <strong>Vigenère</strong>, mais cela prend du temps, comme vous avez pu le constater. Par conséquent, j'ai pris l'initiative de créer deux programmes Python qui permettent de chiffrer et déchiffrer des phrases en utilisant une clé.</p> <br>
+        </div>
+        <div class="box-title-1">
+          <h2 class="souligné_vert">Partie 1 : Crypter</h2>
+          <h2>alphabet(), alphabet_dic(), alphabet_dic_inverse</h2>
+        </div>
+        <div class="box-python-1">
+          <div class="box-content-1">
+            <img src="Image/crypter-alphabet().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">alphabet()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">alphabet() :</u> Cette fonction renvoie une liste contenant l'alphabet en minuscules, de 'a' à 'z', ainsi que l'espace.</p>
+          </div>
+          <div class="box-content-1">
+            <img src="Image/crypter-alphabetdico().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">alphabet_dic()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">alphabet_dic(alphabet) :</u> Cette fonction prend en entrée la liste de l'alphabet et crée un dictionnaire où les clés sont les lettres de l'alphabet et les valeurs sont leurs indices dans l'alphabet. De plus, elle attribue la valeur 26 (indice de l'espace) à la clé ' '.</p>
+          </div>
+          <div class="box-content-1">
+            <img src="Image/crypter-alphabet_dico_inverse().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">alphabet_dic_inverse()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">alphabet_dic_inverse(alphabet_dico) :</u> Cette fonction inverse le dictionnaire obtenu à partir de la fonction précédente, où les clés sont les indices et les valeurs sont les lettres correspondantes.</p>
+          </div>
+        </div>
+        <br>
+        <div class="box-title-1">
+          <h2>liste_cles(), format_cles(), phrase_sans_accent()</h2>
+        </div>
+        <div class="box-python-1">
+          <div class="box-content-1">
+            <img src="Image/crypter-liste_cles().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">liste_cles()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">liste_cles(cles) :</u> Cette fonction prend une chaîne de caractères (la clé) en entrée et renvoie une liste contenant chaque caractère de la clé.</p>
+          </div>
+          <div class="box-content-1">
+            <img src="Image/crypter-format_cles().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">format_cles()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">format_cles(phrase, lst_cles, alphabet) :</u> Cette fonction prend en entrée une phrase, une liste de clés et l'alphabet. Elle formate les clés pour qu'elles correspondent à la longueur de la phrase en remplaçant les espaces par des espaces dans les clés et en ignorant les signes autres que des lettres.</p>
+          </div>
+          <div class="box-content-1">
+            <img src="Image/crypter-phrase_sans_accent().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">phrase_sans_accent()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">phrase_sans_accent(phrase) :</u> Cette fonction prend une phrase en entrée et renvoie une version de cette phrase sans accents, en convertissant les caractères accentués en leur équivalent non accentué, et mettant les lettres majuscules en minuscules.</p>
+          </div>
+        </div>
+        <div class="box-title-1">
+          <h2>liste_ecart(), format_vigenere(), debut()</h2>
+        </div>
+        <div class="box-python-1">
+          <div class="box-content-1">
+            <img src="Image/crypter-liste_ecart().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">liste_ecart()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">liste_ecart(sa_phrase,cles_formatee,alphabet_dico) :</u> Cette fonction prend une phrase sans accents, les clés formatées et le dictionnaire d'alphabet en entrée. Elle calcule les écarts entre les caractères de la phrase et les caractères de la clé, en tenant compte de l'alphabet "dico".</p>
+            </div>
+            <div class="box-content-1">
+            <img src="Image/crypter-vigenere().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">vigenere()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">vigenere(lst_ecart_vigenere,alphabet_dico_inverse) :</u> Cette fonction prend la liste des écarts calculés et le dictionnaire d'alphabet inversé en entrée, puis renvoie la phrase chiffrée en utilisant le chiffrement de Vigenère.</p>
+            </div>
+            <div class="box-content-1">
+            <img src="Image/crypter-Debut().png" alt="" id="python-image-1">
+            <h4 class="python-title-1"><p class="souligné_vert">debut()</p></h4>
+            <p id="python-text-1"><u class="souligné_gris">debut() :</u> Cette fonction est la fonction principale du programme. Elle demande à l'utilisateur de saisir une phrase et une clé, puis elle utilise les fonctions précédentes pour chiffrer la phrase avec le chiffrement de Vigenère et affiche le résultat.</p>
+          </div>
+        </div>
+        <br>
+        <a href="crypter.html" target="blank" class="centre"><h2 class="souligné_vert">Tester le code Python : Crypter (cliquez ici)</h2></a>
+      </div>
+</section>
+
+<section id="python-décrypter">
+
+  <div class="intro-python">
+  <br>
+  <h2 class="souligné_vert_centre" >Partie 2 : Décrypter</h2>
+    <p>Le principe reste le même, mais dans un sens inverse. Par conséquent, on y retrouve des fonctions identiques, avec juste quelques modifications. Je vais donc ne mentionner que celles qui ont été légèrement modifiées.</p>
+    <br>
+  </div>
+  <div class="box-python">
+    <div class="box-title-1">
+      <h2>liste_ecart(), format_vigenere(), debut()</h2>
+    </div>
+    <div class="box-python-1">
+      <div class="box-content-1">
+        <img src="Image/décrypter-liste_ecart().png" alt="" id="python-image-1">
+        <h4 class="python-title-1"><p class="souligné_vert">liste_ecart()</p></h4>
+        <p id="python-text-1"><u class="souligné_gris">liste_ecart(chiffre_vigenere,cles_formatee,alphabet_dico) :</u> Cette fonction prend un chiffre de vigenere, les clés formatées et le dictionnaire d'alphabet inversé en entrée. Elle calcule les écarts entre les caractères du chiffre de vigenere et les caractères de la clé, en tenant compte de l'alphabet.</p>
+      </div>
+      <div class="box-content-1">
+        <img src="Image/décrypter-phrase().png" alt="" id="python-image-1">
+        <h4 class="python-title-1"><p class="souligné_vert">phrase()</p></h4>
+        <p id="python-text-1"><u class="souligné_gris">phrase(lst_ecart_phrase,alphabet_dico_inverse) :</u> Cette fonction prend la liste des écarts calculés et le dictionnaire d'alphabet inversé en entrée, puis renvoie la phrase d'origine avant son chiffrement.</p>
+      </div>
+      <div class="box-content-1">
+        <img src="Image/décrypter-debut().png" alt="" id="python-image-1">
+        <h4 class="python-title-1"><p class="souligné_vert">debut()</p></h4>
+        <p id="python-text-1"><u class="souligné_gris">debut() :</u> Cette fonction est la fonction principale du programme. Elle demande à l'utilisateur de saisir une phrase codée par vigenere et la clé, puis elle utilise les fonctions précédentes pour déchiffrer la phrase avec le déchiffrement de Vigenere et affiche le résultat.</p>
+      </div>
+    </div>
+    <br>
+    <a href="décrypter.html" target="blank" class="centre"><h2 class="souligné_vert">Tester le code Python : Décrypter (cliquez ici)</h2></a>
+  </div>
+</section>
+<hr>
+</body>
+</html>
